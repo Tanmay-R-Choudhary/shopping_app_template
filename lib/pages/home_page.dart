@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:net_ninja_tut/constants/items_grid.dart';
 import 'package:net_ninja_tut/constants/style_constants.dart';
 
 
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: appMainColor,
         elevation: 0.0,
         title: const Text("Search Product", style: TextStyle(color: Colors.black),),
+        centerTitle: true,
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 10),
@@ -52,7 +54,7 @@ class _BodyState extends State<Body> {
           children: [
             const Expanded(
               child: Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 20, right: 10),
                 child: TextField(
                   cursorColor: Colors.black,
                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -68,7 +70,7 @@ class _BodyState extends State<Body> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.only(right: 20),
               child: Container(
                 height: 60,
                 width: 60,
@@ -80,7 +82,9 @@ class _BodyState extends State<Body> {
               ),
             ),
           ],
-        )
+        ),
+        const SizedBox(height: 20,),
+        const Expanded(child: ItemGrid()),
       ],
     );
   }
