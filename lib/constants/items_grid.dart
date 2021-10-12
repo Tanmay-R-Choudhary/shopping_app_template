@@ -11,7 +11,7 @@ class ItemGrid extends StatefulWidget {
 class _ItemGridState extends State<ItemGrid> {
 
   List<Widget> items = [];
-  var itemInformation = ItemInformation.itemData;
+  var itemInformation = itemDataList;
 
   @override
   void initState() {
@@ -57,6 +57,11 @@ class ItemCard extends StatefulWidget {
 }
 
 class _ItemCardState extends State<ItemCard> {
+
+  Color likeColor = Colors.red;
+  Color inactiveColor = Colors.black;
+  Color favouriteButtonColor = Colors.black;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -106,7 +111,17 @@ class _ItemCardState extends State<ItemCard> {
                   ),
                 ),
                 // const Icon(Icons.favorite_border, size: 30,),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border, size: 30,), splashColor: Colors.transparent,)
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      if (favouriteButtonColor == inactiveColor) {
+                        favouriteButtonColor = likeColor;
+                      } else {
+                        favouriteButtonColor = inactiveColor;
+                      }
+                    });
+                  },
+                  icon: Icon(Icons.favorite_border_rounded, size: 30, color: favouriteButtonColor,),)
               ],
             ),
           ),
